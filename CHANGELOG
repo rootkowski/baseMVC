@@ -1,0 +1,316 @@
+Kmom 4.02.02
+
+1. Minor changes to thread controller and forum home view.
+
+2. Adapting thread::submitEditedPost to work with ajax.
+
+3. Ajax function corespoding with number 2 above fixed.
+
+4. Have given up on trying to get WYMeditor to play nicely with ajax.
+
+
+
+Kmom 4.02.01
+
+1. Added getThreadRange() to Thread so that the private property num_of_threads can be accessed.
+
+2. Used the above in the controller.
+
+3. Added returnToForum() to the controller.
+
+
+Kmom 4.02
+
+1. Fixed bugs connected with submitting of form data via ajax and without. 
+  Submitting now works via ajax and with js disabled. Even WYMeditor works though 
+  you have to click twice on Publish for some reason.
+
+
+
+Kmom 4.01.03
+
+Minor fixes for error handling both in Thread and in autosave. Gave up the idea of using json.
+
+
+Kmom 4.01.02
+
+1. Page::outputContent allows certain tags now thanks to switching 
+	from htmlentities to strip_tags;
+
+
+Kmom 4.01.01
+
+1. AJAX takes care of submitting new posts now. If JS disabled PHP takes over.
+
+2. Some clean up around error and message handling.
+
+
+Kmom 4.00.06
+
+1. Fixed loadeditor class error when redirecting to login page.
+
+
+Kmom 4.00.05
+
+1. Added ajax control over saving of new posts (only, next's gonna be editing). 
+
+
+Kmom 4.00.04
+
+1. Added discard button and prepared a js file for jquery actions of form buttons.
+	Added button action images.
+
+2. Rearranged user posts view to suit thread view.
+
+3. Added post numbers to thread view. They have no relation to id stored in db!
+
+
+Kmom 4.00.03
+
+Thread redirects to forum if do action doesn't exist.
+
+
+Kmom 4.00.02
+
+LoadEditor makes sure now that the editor it tries to load actually exists,
+and if not, loads default.
+
+
+Kmom 4.00.01
+
+1. Blog edit gets the LoadEditor and requireLogin update.
+
+2. Every reference to requireLogin sets session erro msg to view that login is required.
+
+
+Kmom 4.00.0
+
+1. Extended usage of Authorise->requireLogin and LoadEditor to blog.
+
+
+Kmom 3.99.21
+
+1. Fixed loading of javascript files when necessary. 
+	Unfortunately the footer viewer got a bit too much php code. 
+
+
+Kmom 3.99.20
+
+1. The titles still didn't work in Thread so had to do it properly this time
+	(hopefully!).
+	
+2. Rearranged thread view.
+
+
+Kmom 3.99.19
+
+1. Improved category view in the forum adding extra data.
+
+
+Kmom 3.99.18
+
+1. Added ThreadStats table to db to store number of posts in each thread.
+
+2. Added triggers to handle ThreadStats.
+
+3. Fixed logic for checking range of threads for getting thread data.
+
+4. Added more security to Thread submissions to db.
+
+5. Fixed some CSS for forum home.
+
+6. Slightly changed title.
+
+7. Added delay to jquery error effect.
+
+8. Category selection doesn't show if thread_id is set. Fixed the issue of category 
+	having no value on submit b/c of disabled select element when entered from in_cat.
+	
+9. Updated links to viewing thread/post in user posts view. 
+
+10. Added whole new view category threads view. 
+
+11. Removed categories and latest threads views.
+
+12. Reorganised forum home view.
+
+
+
+
+Kmom 3.99.17
+
+1. Added a simple effect to fade out error msg's.
+
+2. $_SESSION['error_msg'] is now cleared (set to empty) once a msg is viewed.
+
+
+
+Kmom 3.99.16
+
+1. Moved editor loading from view to controller.
+
+
+
+Kmom 3.99.15
+
+1. Created a one-file forum home view that uses available methods rather than arrays.
+
+2. Created a forum view directory, but views still have to be moved there.
+
+3. When calling a startNewThread method from forum, rather than thread, the category
+	identification was changed from cat to in_cat ($_GET['in_cat']). This solved
+	shifted footer and unnecessary view of all threads in category when adding a new
+	thread with a category preselected.
+	
+4. Categories seems to be managed properly now in new post view.
+
+
+Kmom 3.99.14
+
+Thread edit requires login if session uid isn't set.
+
+
+Kmom 3.99.13
+
+Moved error printing into header view. $_SESSION['error_msg'] to be used for error storing.
+
+
+Kmom 3.99.12
+
+What was broken seems fixed now, but the DB, Page, Thread classes really need 
+rewriting and reorganising. 
+
+1. Introduced $this->db in Page as a reference to DB $_instance for easier coding.
+
+2. Some new structure and logic in Thread, thread view and new post view.
+
+3. New stored procedure to get category of the current thread.
+
+
+
+Kmom 3.99.11
+
+1. Removed $_SERVER['SERVER_PORT'] from REFR_URL.
+
+2. Most of the mess seems to be fixed:
+	a. Login page redirects correctly.
+	
+	What should be done is to use the requireLogin() method in all suitable places
+	that require authorisation.
+	
+	Another thing is that submitting new posts/threads is still broken. See closer into 
+	the thread_id parameter being sent or rather MISSING.
+
+
+Kmom 3.99.10
+
+1. Removed method calls through $this->Authorise->method().
+
+2. Replaced Page::$config['error'] with $_SESSION['error_msg'] in Thread_controller.
+
+3. Changed Thread::setThreadId to create an id for a new thread, but it still isn't possible to create new posts/threads.
+
+4. Moved DB instance call from Page to Authorise.
+
+5. Changed Authorise::setReturnURL from private to protected for testing purposes. MUST BE REVERSED!
+
+
+Kmom 3.99.09
+
+1. Reworking how adding a new post or thread works:
+	It's now an independent page that recieves data about parent thread or category.
+	
+2. Merged Login into Authorise. 
+
+3. Created Login_controller that lives in CTRLS directory.
+
+4. Changed class hierarchy.
+
+5. Made the mess even bigger... :(
+
+
+Kmom 3.99.08
+
+1. Corrected links to editing from within user_post_view.
+
+
+Kmom 3.99.07
+
+1. Restructuring Forum and Thread.
+
+2. Minor structural improvements to Home.
+
+2. Added current_url variable to Page to start work on improving redirects.
+
+
+Kmom 3.99.06
+
+1. Moved view-calls from Forum-model to Forum-controller (other controllers to follow). 
+  No view-methods at all in the Model.
+
+
+Kmom 3.99.04 - 3.99.05
+Insignificant changes.
+
+
+Kmom 3.99.03
+
+1. Restructured forum controller to OOP. Other controllers should follow.
+
+2. Implemented in_array checks on $_GET['cat'] in the forum. $_GET['uid'] should follow
+  (Checks for other $_GET values should be implemented).
+
+
+Kmom 3.99.02
+
+1. Fixed footer - removed from index.php. Call function from each controller instead.
+  Might still need a rethink.
+  
+2. Removed redundant initilization of Authorise in Thread, which inherits from Forum.
+
+3. Cleaned up getters/setters/viewers in forum.
+
+4. Simplified Forum::getCurrentCategory.
+
+5. Added redirects in Forum Controller for non numeric values for uid and cat.
+
+6. Rebuilt thread controller.
+
+
+Kmom 3.99.01
+
+1. Created the application directory, moved M, V and C to application.
+
+2. Moved config.php to src-directory.
+
+3. Moved application paths to index.php to improve management of direct access 
+  to other files.
+  
+4. Updated some path calls, there might still be more to update.
+
+
+Kmom 3.00
+
+1. Fixed editor switching feature, for now only for the forum.
+
+2. Fixed WYMeditor not submitting textarea input.
+    The problem is that WYMeditor DOES NOT use the textarea element at all.
+    It sets textarea to display: none; and uses it's own elements instead.
+    The problem is fixed once you add  class="wymupdate" to the submit element. 
+    
+================================================================================
+Efter en lång paus från plugget kunde jag äntligen slutföra kursmomentet. Som jag skrev föra gången, är min <i>persia</i> skriven enligt MVC pattern. Det hjälper en hel del, för att trots all oordning jag har i min kod (vissa moduler har alla tre delar MVC som det borde vara, men de flesta har inte det; jag har alldeles för många osorterade View-filer) tog det inte så mycket tid att komma igång med projektet igen.
+
+Mitt största huvudvärk under det här kursmomentet var brist på översikt vad i koden kommer igång när det ena eller det andra händer. Jag kom till slutsatsen att tydliga UML-diagram behövs och började arbeta på sådana. Vill skapa diagram för att se tydligt hur klasser relaterar med varandra, några Case diagram skulle vara användbara också. 
+
+Tiden närmar sig också att jag borde se igenom alla mina Modeller, Controllers och View-filer och se vad som upprepas för att äntligen kunna skapa klasser: Model, Viewer, Controller.
+
+När det gäller JavaScript har jag lite erfarenhet från tidigare kurser. Tycker det är roligt att skriva mha. jQuery. Jag hade inga större problem med att integrera editorerna, fast WYMeditor ställde till med lite bekymmer. Det var ganska svårt i alla fall att göra två editorer tillgängliga, men till slut löste det sig (http://www.student.bth.se/~prru09/kmom03/CHANGELOG). 
+
+Förutom Changelog, har jag nu också en separat TODO-fil (http://www.student.bth.se/~prru09/kmom03/TODO). Lättare på det sättet istället för att ha några todo's i varje fil. 
+
+På min hemmaserver fungerar allt helt felfritt, men jag hade lite problem på skolans server:
+- plötsliga utloggningar: händer hela tiden i Chromium, hände en gång i Firefox och har aldrig hänt i Opera;
+- headers already sent: händer bara när man startar ett nytt tråd medan man är i någon forumkategori.
+
+Projektet finns på <a href="http://www.student.bth.se/~prru09/kmom03/" title="Visa projektet">http://www.student.bth.se/~prru09/kmom03/</a>.

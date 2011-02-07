@@ -1,0 +1,246 @@
+/* 
+    Document   : default.css
+    Created on : 10-Nov-2009, 13:54:52
+    Author     : przemek
+    Description: 
+    
+    #main
+    .post
+    .postHeader
+    .postData
+    .postContent
+    
+    #modules
+    .navModule
+*/
+
+/* GLOBAL ELEMENTS */
+body{
+	font:12pt "Trebuchet MS";
+}
+blockquote{
+	font-style:italic;
+	margin:15px 20px;
+	padding:10px;
+}
+form{
+	margin:60px 50px;
+}
+fieldset{
+	border:1px solid #363;
+	/*-moz-border-radius:8px;*/
+}
+legend { padding:15px 0; }
+label { vertical-align: top; }
+h1, h2, h3 {	text-align:center; }
+h4 { margin:30px 10px 10px 0; }
+blockquote { background: #ddd; border: 1px solid #999; text-align: center; }
+textarea { background: #fff; }
+table { margin:25px 0; }
+form table{
+	margin:5px 0;
+}
+th{
+	background:#999;
+	padding:6px;
+}
+th a {
+	color:#000;
+}
+td{
+	padding:10px;
+	vertical-align:top;
+}
+img{
+	border:none;
+}
+
+/* ID ELEMENTS */
+#wrapper{
+	margin:0 auto;
+	position: relative;
+	vertical-align:middle;
+	width:920px;
+}
+#nav ul{
+	background:#ccc;
+	display:block;
+	height:28pt;
+	padding:0;
+	margin:0;
+}
+#nav li{
+	display:inline;
+	list-style:none;
+	margin:0;
+}
+#nav li a{
+	color:#363;
+	display:table-cell;
+	float:left;
+	line-height:28pt;
+	padding:0 12px;
+	text-decoration:none;
+}
+#nav li a:hover{
+	background:#333;
+	color:#fff;
+}
+#login{
+	float:right;
+	margin:5px;
+	font-size:10pt;
+}
+#main { float:left; width:600px; }
+#modules { float:right; width:260px; }
+#footer{
+	border:1px solid #999;
+	clear: both;
+	font-size:10pt;
+	margin:15px 0;
+	padding:10px 0;
+	text-align:center;
+}
+/* STYLE SWITCH ID ELEMENTS */
+#main1, #main2, #main3 {
+	background:#ddd;
+	float:left;
+	margin:0 0 15px 0;
+	padding:10px 0;
+	width:640px;
+}
+#main2{
+	width:680px;
+}
+#main1 {
+	width:920px;
+}
+#left2, #left3, #right2, #right3 {
+	padding:10px 0;
+	float:left;
+	width:140px;
+}
+#left2, #right2 {
+	width:220px;
+}
+#left2 a, #left3 a, #right2 a, #right3 a{
+	font-size:10pt;
+	margin:0 15px;
+}
+
+/* CLASS ELEMENTS */
+.comment{
+	border:1px solid #363;
+	font-size:9pt;
+	margin:10px 0;
+	padding:0 15px;
+	/*-moz-border-radius:8px;*/
+}
+.comment blockquote{
+	background:#777;
+	color:#fff;
+	/*-moz-border-radius:6px;*/
+}
+.error, .message{
+	background: #EE4444;
+	border: 1px solid #e44;
+	border-radius: 5px;
+	color: #222;
+	font-size: 9pt;
+	font-weight: bold;
+	padding: 3px 10px;
+	position: absolute;
+	top: -2px;
+	width: 400px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.message { background: #4DBD4B; border-color: #4DBD4B; }
+
+.tdlabel{
+	background:#555;
+	color:#fff;
+	font-weight:bold;
+}
+.tdlabel input{
+	margin:2px;
+}
+button, a.button{
+    background:#3399ff;
+	border:1px solid #333;
+	color:#fff;
+	cursor:pointer;
+	display:inline-block;
+	float:left;
+	font:bold 11pt "Trebuchet MS";
+	height:32px;
+	line-height:32px;
+	margin:3px 3px 20px 3px;
+	text-decoration:none;
+}
+button{
+	height:34px;
+}
+.button {
+	padding:0 10px 0 40px;
+}
+a.add, .add{
+	background:#3399ff url(../img/Add.png) no-repeat 5px 50%;
+}
+a.edit, .edit{
+	background:#3399ff url(../img/Edit.png) no-repeat 5px 50%;
+}
+a.remove, .remove{
+	background:#3399ff url(../img/Remove.png) no-repeat 5px 50%;
+}
+a.submit, .submit{
+	background:#3399ff url(../img/Submit.png) no-repeat 5px 50%;
+}
+a.teacher, .teacher{
+	background:#3399ff url(../img/User.png) no-repeat 5px 50%;
+}
+.intext{
+	margin-bottom:20px;
+	overflow:hidden;
+}
+.intext img{
+	float:left;
+	margin:0 15px 15px 0;
+}
+.intext blockquote{
+	margin-top:0;
+	padding-top:0;
+}
+.clr{
+	clear:both;
+}
+
+.post {border: 1px solid #999; margin:10px 0 3px 0; overflow:hidden; }
+.post h4 { background: #ddd; color: #333; margin: 0; padding: 8px 10px; }
+.post a { color: #333; }
+.post p { font-size: 11pt; margin: 0; padding: 12px 10px 15px 10px;  }
+.post hr { color: #666; margin: 0; width: 97%;}
+.post .postUserInfo { background: #efefef; color: #333; float: left; font-size: 10pt; width: 20%; }
+.post .postUserInfo a { text-decoration: none; }
+.post .postUserInfo small span { color: #555; }
+.post .postContent { float: right; width: 78%; }
+.post p.postActions { background: #ddd; font-size: 10pt; margin: 1px 0 0; padding: 5px 10px; }
+.numofcomment { background:#49f; border:1px solid #49f; color:#fff; float:right; font-size:10pt; padding:5px 10px; /*-moz-border-radius:5px;*/ }
+.navModule { background:#ddd; margin:10px 0; overflow:hidden; padding:4px; }
+.navModule li, .navModule ul { margin:0; list-style:none; padding:5px; }
+.navModule img { text-align:center; margin: 5px 65px; position:relative; width:122px; }
+.navModule form { margin:5px; }
+.navModule fieldset { border: 0; margin: 0; padding: 0; }
+
+#defaultCSS, #alternateCSS { font-size:12px; line-height:18px; text-align: center; width: 112px; }
+
+.module { float: left; width: 450px; }
+.forum_module { float: left; margin: 15px 20px 15px 0; width: 440px; }
+
+h4 span a { margin: auto 10px; }
+
+#submit_new_post, #submit_edited_post { background: #3399ff url(img/dialog-ok-apply.png) no-repeat 5% 50%; }
+#save_draft { background: #3399ff url(img/document-save.png) no-repeat 5% 50%; }
+#discard_draft { background: #3399ff url(img/window-close.png) no-repeat 5% 50%; }
+#submit_new_post, #submit_edited_post, #save_draft, #discard_draft { padding-left: 30px;}

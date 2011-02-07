@@ -1,0 +1,99 @@
+1. get error msgs to work (in case of unsuccessful login etc).
+
+2. get redirecting to work (at login) >> redirect back to the wanted page instead of the front page!
+
+3. try to implement factory pattern and see if i then can use this-> everywhere.
+
+4. restructure files and folders so that controllers and models are mirrored in the views;
+      t.ex. Model Class name is also a name of a folder within the views folder which in turn
+      includes all views connected with this Model and coresponding Controller.
+      
+5. find a way to allow certain markup in the forum (like <p> and <h3>)
+
+6. figure out what to do with all the direct access control (if(!isset($visited)) die('No direct access allowed!');). 
+  It seems to be causing a whole lot of trouble. So THINK IT THROUGH!
+  
+  Seems to be fixed. Needs more testing though. Thanks to CI
+
+7. WYSIWYG - make editor switching work on other pages than just forum add post and edit.
+ 
+8. USER MENU
+  a. if user doesn't have priviliges to add blog posts, (can only post on the forum), 
+    hide blog options in the top menu. 
+  b. clicking on the user's name should link to some account management page 
+    not user's non-existant blog page.
+    
+9. FORUM
+  a. If the author of the first post in a thread chooses to change the title 
+    it's not reflected in the thread title though it should.
+    
+  b. If a user chooses to start a new discussion from within a forum category
+    thread category should be set to the one user started from.
+    
+  c. Consider reSTRUCTURing forum and thread classes:
+    perhaps merging them wouldn't be such a bad idea.
+    
+  d. There is a clear confusion in what methods do and their naming. Lots of getters
+    set data, not only get it.
+    
+  e. If the category number provided doesn't exist sth should be done to avoid getting errors.
+  
+  f. if( in_array ) checks should be run on:
+    - $_GET['cat']
+    - $_GET['uid']
+    and run from the controller.
+    
+  g. thread_list_header should be manage in a better way. Perhaps it would even be 
+    better to create a separate view for the front page and for category views.
+    
+    h. clicking on Start New Discussion when not logged in should redirect to the login page.
+    
+    i. The add new post/thread page should be a separate view. Possibly it could recieve 
+    	a parameter to pre-select category if the link to the page was clicked from 
+    	within a category page. It should NOT include list of all discussions in 
+    	the particular category.
+    
+10. CSS
+  a. Fix CSS for the blog part which got messed up after adjusting view of the forum.
+  
+11. STRUCTURE
+  a. Introduce global-config to be able to set use of different modules, like forum, blog, ajax, 
+    set page title, css, perhaps page_error.
+    
+    Page class contains a config array, but is it necessary?
+  
+  b. To modularise:
+    - forum
+    - blog
+    - ajax functionality
+    - login functionality
+    - session management - move from index.php to a helper or config file
+    
+  c. Fix error system
+  
+  d. Find a solution for including footer other than adding it from index.php.
+  
+    Fixed in 3.99.02, might still need some attention.
+    It's not a good solution. Try including it from Page or Controller class.
+    There should be a proper system managing header/content/footer rendering 
+    and it shouldn't be in every particular controller. Rather more abstract 
+    in a parent class.
+    
+	e. All view method calls should be moved from Model to Controller.
+	
+	f. Instead of creating solution to every page that might not exist within 
+		every possible controller and model there should be an overall system
+		that takes care of it by checking if page exists and if not redirecting
+		to error page (403 or sth).
+		
+	g. Models should not refer to $_GET nor $_POST (or similar) arrays.
+    
+12. SQL
+  a. Rewrite all SQL to SP/Funcs.
+  
+13. PAGE
+  a. header should be renamed to sth like viewHeader/setHeader.
+  
+14. OOP
+	Avoid naming methods the same within different classes and call one from inside the other!
+	Yes, it creates an infinite loop.
