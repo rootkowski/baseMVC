@@ -6,7 +6,7 @@
 
 ?>
 <h1>Welcome to baseMVC</h1>
-<blockquote><p>The aim of this project is to create a usable and functional MVC framework for PHP applications.</p></blockquote>
+<blockquote class="box"><p>The aim of this project is to create a usable and functional MVC framework for PHP applications.</p></blockquote>
 <div class="module">
 	<h3>Latest from the Blog</h3>
 	<ul>

@@ -97,3 +97,6 @@
 14. OOP
 	Avoid naming methods the same within different classes and call one from inside the other!
 	Yes, it creates an infinite loop.
+	
+
+15. Fix MarkItUp error with jQuery and $ not being defined - try HTML5 Boilerplate solution.

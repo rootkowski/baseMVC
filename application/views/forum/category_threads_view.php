@@ -1,4 +1,4 @@
-<div class="">
+<div class="forum">
 <?php
 
 
@@ -7,30 +7,35 @@ if( count($this->content_data) === 0 ) :
 
 else :
 ?>
-<table style="width: 100%">
+<table>
 	<tr>
 		<th>Title</th>
 		<th>Replies</th>
+		<th>Last Post</th>
 	</tr>
 <?php
 foreach( $this->content_data as $key => $value ) :
 	extract($value);
 	$i = 0; $i++;
 ?>
-	<tr style="background: #ddd; margin: 15px 0; padding: 15px;">
-		<td>
-			<a style="color: #222; text-decoration: none;" href="?page=thread&do=view_thread&thread_id=<?php echo $t_id; ?>"><?php echo $title; ?></a>
+	<tr>
+		<td class="thread-title">
+			<a href="?page=view_thread&amp;thread_id=<?php echo $t_id; ?>"><?php echo $title; ?></a>
 			<br/>
-			<small style="color: #555;">by <?php echo $name . ' on ' . $started_on; ?></small>
+			<small>by <?php echo $name . ' on ' . $started_on; ?></small>
 		</td>
-		<td style="line-height: 50px; text-align: center; width: 8%;"><?php echo $postNum - 1; ?></td>
+		<td class="thread-replies"><?php echo $postNum - 1; ?></td>
+		<td>Some date and name</td>
 	</tr>
 <?php
 	endforeach;
 ?>
+	<tr class="last-row">
+		<td colspan="3"><p><a href='?page=start_new_thread<?php if( isset($_GET['cat'] ) && is_numeric($_GET['cat']) ) echo '&in_cat=' . $_GET['cat']; ?>'>Start New Discussion</a></p></td>
+<!-- 		<td>&nbsp;</td> -->
+	</tr>
 </table>
 <?php	
 endif;
-?>
-	<p><a href='?page=thread&do=start_new_thread<?php if( isset($_GET['cat'] ) && is_numeric($_GET['cat']) ) echo '&in_cat=' . $_GET['cat']; ?>'>Start New Discussion</a></p>
+?>	
 </div>

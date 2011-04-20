@@ -145,6 +145,14 @@ class Authorise extends DB
 		else
 			$_SESSION['error_msg'] = 'Wrong user name or password!';
 	}
+	
+	
+	
+	function userDrafts( $uid )
+	{
+		$num_of_drafts = $this->select("SELECT count(d_id) as drafts FROM ForumDrafts WHERE author_id = {$uid} AND draft_state = 'draft';");
+		return $num_of_drafts[0]['drafts'];
+	}
 
 
 	// @todo: extend the use of class Authorise into login and content management

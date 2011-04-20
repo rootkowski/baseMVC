@@ -17,7 +17,7 @@ class Page extends Authorise
 //	private $mysqli = '';
 
 	public static $config = array(
-		'css'   => 'BASE_URL . DS . css/default.css',
+		'css'   => 'css/default.css',
 		'title' => 'baseMVC',
 		'menu'  => '',
 		'error' => ''
@@ -124,7 +124,7 @@ class Page extends Authorise
 
 		foreach( $tmp_menu as $key => $value )
 		{
-			self::$config['menu'] .= "<li><a href=\"$value\">$key</a></li>
+			self::$config['menu'] .= "<a href=\"" . BASE_URL . DS . $value . "\">$key</a>
 				";
 		}
 	}

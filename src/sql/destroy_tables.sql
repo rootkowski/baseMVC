@@ -17,6 +17,7 @@ drop table if exists ThreadStats;
 drop table if exists ForumStats;
 drop table if exists BlogComments;
 drop table if exists BlogContent;
+drop table if exists ForumDrafts;
 drop table if exists ForumPosts;
 drop table if exists ForumThreads;
 drop table if exists ForumCategories;

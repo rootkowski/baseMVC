@@ -4,7 +4,7 @@
  */
 extract($this->content_data);
 ?>
-		<div class="post">
+		<article class="blog-post">
 			<h3 class="postHeader"><?php echo stripslashes($title); ?></h3>
 			<p class="postData"><?php echo 'Added on '.$date . ' by ' . $author_name; ?></p>
 			<div class="postContent">
@@ -12,7 +12,7 @@ extract($this->content_data);
 				<?php echo stripslashes($content); ?>
 
 			</div>
-		</div>
+		</article>
 
 	<h5>There are <?php echo $comm_num; ?> comments about this article</h5>
 

@@ -9,6 +9,8 @@ class Edit extends Page
 {
 
 	public $article_data;
+	
+	public $load_editor = true;
 
 
 	function  __construct()

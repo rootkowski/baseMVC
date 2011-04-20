@@ -1,12 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+	<link  href="http://fonts.googleapis.com/css?family=Droid+Sans:regular" rel="stylesheet" type="text/css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title><?php echo Page::$config['title']; ?></title>
-	<link rel="stylesheet" type="text/css" href="<?php echo Page::$config['css']; ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . DS . Page::$config['css']; ?>" />
 </head>
 <body>
 	<div id="wrapper">
+		<header>
 <?php
 if( isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']) ) :
 ?>
@@ -23,8 +26,8 @@ $_SESSION['message'] = '';
 endif;
 ?>
 		<?php require_once 'loginmenu.php'; ?>
-		<div id="nav" class="clr">
-			<ul>
-				<?php echo Page::$config['menu']; ?>
-			</ul>
-		</div>
+		<nav class="clr">
+			<?php echo Page::$config['menu']; ?>
+		</nav>
+	</header>
+	<div id="main">

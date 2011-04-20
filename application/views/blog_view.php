@@ -7,7 +7,7 @@
 	<h2>BaseMVC - Blog</h2>
 
 	<!-- main div with chronologically ordered posts -->
-	<div id="main">
+	<div id="blog">
 
 <?php
 /*
@@ -17,7 +17,7 @@
 foreach( $this->content_data as $key => $value ) :
 	extract($value);
 ?>
-		<div class="post">
+		<div class="blog-post">
 			<h3 class="postHeader"><a href="<?php echo "?page=article&amp;id={$id_Content}"; ?>"><?php echo $title; ?></a></h3>
 			<p class="postData"><?php echo 'Added on '.$date.' by '.$name.'.'; ?></p>
 			<div class="postContent">

@@ -29,3 +29,4 @@ class Manage extends Page
 
 $manage = new Manage();
 $manage->getArticles();
+$manage->footer();

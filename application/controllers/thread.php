@@ -88,7 +88,7 @@ class Thread_controller extends Thread
 				if( !$this->forumAuthorisation($_GET['post_id'], $_SESSION['uid']) )
 				{
 					$_SESSION['error_msg'] = "<p>You do not own this post and cannot edit it</p>";
-					header('Location: ' . BASE_URL . '?page=thread&do=view_thread&thread_id=' . $_GET['thread_id']);
+					header('Location: ' . BASE_URL . '?page=view_thread&thread_id=' . $_GET['thread_id']);
 				}
 				if( $this->forumAuthorisation($_GET['post_id'], $_SESSION['uid']) )
 				{
@@ -122,90 +122,63 @@ class Thread_controller extends Thread
 	}
 
 
-  public function returnToForum()
-  {
-    header('Location: ' . BASE_URL . DS . '?page=forum');
-  }
+	public function returnToForum()
+	{
+		header('Location: ' . BASE_URL . DS . '?page=forum');
+	}
 	
 }
 
 
 $thread = new Thread_controller();
 
-if( isset($_POST['submit_new_post']) )
-	$thread->submitPost();
-
-
-if( isset($_POST['submit_edited_post']) )
-	$thread->submitEditedPost();
-  
-/*
-if( isset($_GET['editor']) && $_GET['editor'] === 'wymeditor' )
-	$thread->LoadEditor->chooseEditor('wymeditor');
-else
-	$thread->LoadEditor->chooseEditor();
-*/
-
-if( isset($_GET['do'] ) )
+	  
+if( $_GET['page'] === 'view_thread' )
 {
-	
-	if( $thread->verifyThreadAction($_GET['do']) )
-	{ 
-	  
-		if( $_GET['do'] === 'view_thread' )
-		{
-			if( isset( $_GET['thread_id'] ) && is_numeric( $_GET['thread_id'] ) && $_GET['thread_id'] <= $thread->getThreadRange() )
-				$thread->viewThread($_GET['thread_id']);
-      else
-        $thread->returnToForum();
-		}
-	  
-	  
-		if( $_GET['do'] === 'start_new_thread' )
-		{
-			if( isset($_SESSION['uid'] ) )
-				$thread->startNewThread();
-			else
-			{
-				$_SESSION['error_msg'] = "Login required to access the page";
-				$thread->requireLogin( REFR_URL );
-			}
-		}
-	  
-	  
-		if( $_GET['do'] === 'edit' )
-		{
-			if( isset($_SESSION['uid'] ) )
-				$thread->editPost();
-			else
-			{
-				$_SESSION['error_msg'] = "Login required to access the page";
-				$thread->requireLogin( REFR_URL );
-			}
-		}
-		
-		
-	/*
-	 * $_GET for ajax funcs to work
-	 */	
-		
-		if( $_GET['do'] === 'submit_new_post' ) 
-		{
-			sleep(1);
-			$thread->submitPost();			
-		}
-		
-		
-		if( $_GET['do'] === 'submit_edited_post' ) 
-		{
-			sleep(1);
-			$thread->submitEditedPost();			
-		}
-    
-	}
+	if( isset( $_GET['thread_id'] ) && is_numeric( $_GET['thread_id'] ) && $_GET['thread_id'] <= $thread->getThreadRange() )
+		$thread->viewThread($_GET['thread_id']);
 	else
 		$thread->returnToForum();
-  
 }
-else
-	$thread->returnToForum();
+
+
+if( $_GET['page'] === 'start_new_thread' )
+{
+	if( isset($_SESSION['uid'] ) )
+		$thread->startNewThread();
+	else
+	{
+		$_SESSION['error_msg'] = "Login required to access the page";
+		$thread->requireLogin( REFR_URL );
+	}
+}
+
+
+if( $_GET['page'] === 'edit_post' )
+{
+	if( isset($_SESSION['uid'] ) )
+		$thread->editPost();
+	else
+	{
+		$_SESSION['error_msg'] = "Login required to access the page";
+		$thread->requireLogin( REFR_URL );
+	}
+}
+        
+        
+/*
+ * $_GET for ajax funcs to work
+ */ 
+        
+if( $_GET['page'] === 'submit_new_post' ) 
+{
+	sleep(1);
+	$thread->submitPost();          
+}
+
+
+if( $_GET['page'] === 'submit_edited_post' ) 
+{
+	sleep(1);
+	$thread->submitEditedPost();            
+}

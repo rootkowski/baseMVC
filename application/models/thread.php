@@ -147,11 +147,11 @@ class Thread extends Forum
 		//echo '<h3>newThread() called</h3>';
 		
 		$this->insert("insert into ForumThreads(title, started_by, started_on, category, write_status)
-									 values('" . $this->db->real_escape_string($_POST['title']) . "',
-											     " . $this->db->real_escape_string($_POST['user_id']) . ",
-												   NOW(),
-										    	 " . $this->db->real_escape_string($_POST['category']) . ",
-											   	 TRUE);");
+			values('" . $this->db->real_escape_string($_POST['title']) . "',
+			        " . $this->db->real_escape_string($_POST['user_id']) . ",
+				   NOW(),
+					" . $this->db->real_escape_string($_POST['category']) . ",
+					TRUE);");
   
 
 		if( DB::$_instance->affected_rows === 1 )
@@ -213,7 +213,7 @@ class Thread extends Forum
 					$return = array('retid' => $this->getThreadId());
 					echo json_encode($return);
 					if( !isset($_POST['ajax']) )
-					 header('Location: ' . BASE_URL . "?page=thread&do=view_thread&thread_id={$this->getThreadId()}");
+					 header('Location: ' . BASE_URL . "?page=view_thread&thread_id={$this->getThreadId()}");
 				}
 				else    
 				{			
@@ -253,7 +253,7 @@ class Thread extends Forum
 		if( $edited_forum_post == 1 )
 		{
 			if( !isset($_POST['ajax']) )
-				header('Location: ' . BASE_URL . "?page=thread&do=view_thread&thread_id={$thread_id}#{$post_id}");
+				header('Location: ' . BASE_URL . "?page=view_thread&thread_id={$thread_id}#{$post_id}");
 				
 			echo json_encode(array('retid' => $thread_id, 'postid' => $post_id));
 	    }

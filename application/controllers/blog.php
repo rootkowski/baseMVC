@@ -31,16 +31,17 @@ $blog->view('blog_view', $data);
 
 ?>
 	
+	<aside>
 	
 	<!-- navigation div with all authors, 10 latest posts, style chooser and RSS -->
-	<div id="modules">
+	<!--div id="modules">
 		<div class="navModule">
 			<h3>Our Authors</h3>
-			<ul>
+			<ul-->
 				
 			<?php
 
-			$get_authors = $blog->callSelectSP('SELECT * FROM BlogAuthors GROUP BY name');
+//			$get_authors = $blog->callSelectSP('SELECT * FROM BlogAuthors GROUP BY name');
 			
 //			$queryAuthors = "SELECT * FROM BlogAuthors GROUP BY name";
 //			$resultAuthors = $mysqli->query($queryAuthors) or die("Could not query database");
@@ -51,11 +52,11 @@ $blog->view('blog_view', $data);
 			
 			?>
 			
-			</ul>
-		</div>
-		<div class="navModule">
+			<!--/ul>
+		</div-->
+		<!--div class="navModule">
 			<h3>Latest Posts</h3>
-			<ul>
+			<ul-->
 				
 			<?php
 			
@@ -68,9 +69,9 @@ $blog->view('blog_view', $data);
 			
 			?>
 				
-			</ul>			
-		</div>
-		<div class="navModule">
+			<!--/ul>			
+		</div-->
+		<!--div class="navModule">
 			<h3>Style Chooser</h3>
 			<form method="post" action="">
 				<fieldset>
@@ -78,18 +79,20 @@ $blog->view('blog_view', $data);
 				<button type="submit" id="alternateCSS" name="alternateCSS">Alternate Style</button>
 				</fieldset>
 			</form>
-		</div>
+		</div-->
 		<div class="navModule">
 			<h3>Get The Latest News</h3>
 			<p><a href="?page=feed" title="Subscribe to our RSS feed"><img src="<?php echo TMPL_URL . DS; ?>img/rss.png" alt="feed icon" /></a></p>
 		</div>
+	</aside>
+		<?php 	
+	//	$resultAuthors->free();
+	//	$resultLatest->free();
+	//	$result->free();
+	//	$mysqli->close();
+	
+	$blog->close_connection();
+	$blog->footer();
+	?>
 	</div>
 	
-	<?php 	
-//	$resultAuthors->free();
-//	$resultLatest->free();
-//	$result->free();
-//	$mysqli->close();
-
-$blog->close_connection();
-$blog->footer();

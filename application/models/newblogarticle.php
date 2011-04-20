@@ -7,6 +7,8 @@
  */
 class NewBlogArticle extends Page
 {
+	
+	public $load_editor = true;
 
 
 	function  __construct()

@@ -67,7 +67,7 @@ $('#submit_new_post').click( function() {
 		
 		$.ajax({
 			type:	"POST",
-			url:	"?page=thread&do=submit_new_post",
+			url:	"?page=submit_new_post",
 			data:	"thread_id=" + t_id + "&title=" + title + "&message=" + msg + "&user_id=" + u_id + "&category=" + cat + "&ajax=enabled",
 			dataType: "json",
 			success:function(data, status, ajaxobject) {
@@ -84,7 +84,7 @@ $('#submit_new_post').click( function() {
 					.slideDown(400)
 					.delay(3000)
 					.slideUp(200, function() {
-						window.location = '?page=thread&do=view_thread&thread_id=' + data.retid;
+						window.location = '?page=view_thread&thread_id=' + data.retid;
 					});
 			}
 		});
@@ -105,10 +105,15 @@ $('#submit_new_post').click( function() {
  * Autosave
  */
 $('#message').focusin(function() {
-  window.setTimeout(function() {
-    // Run autosave via ajax
-    console.log("5 seconds passed");
-  }, 5000);
+	// works once after the timeout
+	//window.setTimeout(function() { 
+
+	// works at interval but if the textarea loses focus and then gets it back 
+	// there are two intervals going on!
+	window.setInterval(function() { 
+		// Run autosave via ajax
+		console.log("5 seconds passed");
+	}, 5000);
 });
 
 
@@ -129,7 +134,7 @@ $('#submit_edited_post').click( function() {
 		
 		$.ajax({
 			type:	"POST",
-			url:	"?page=thread&do=submit_edited_post",
+			url:	"?page=submit_edited_post",
 			data:	"thread_id=" + t_id + "&title=" + title + "&message=" + msg + "&post_id=" + p_id + "&ajax=enabled",
 			dataType: "json",
 			success:function(data, status, ajaxobject) {
@@ -146,7 +151,7 @@ $('#submit_edited_post').click( function() {
 					.slideDown(400)
 					.delay(3000)
 					.slideUp(200, function() {
-						window.location = '?page=thread&do=view_thread&thread_id=' + t_id + '#' + p_id;
+						window.location = '?page=view_thread&thread_id=' + t_id + '#' + p_id;
 					});
 			}
 		});

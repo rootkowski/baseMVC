@@ -1,3 +1,121 @@
+Kmom 4.1.12
+
+1. Corrected links in main menu and login menu.
+
+
+
+Kmom 4.1.11
+
+1. Correct path to css stylesheet.
+2. Blog article uses article tag now instead of div.
+
+
+
+Kmom 4.1.1
+
+1. Added ForumPost classes with some initial methods.
+2. Added url rewrite rules for forum/thread/post/draft.
+
+
+
+Kmom 4.1-01
+
+1. Testing separation of post from thread will happen from here on in a testing branch.
+	Initial.
+
+
+
+Kmom 4.05.3
+
+1. Changed the way url's are managed to minimize the number of $_GET's. Several 
+	$_GET['page'] point to the same controller which in turn takes care of them
+	from there.
+	
+2. Updated links to reflect the above changes (hopefully all).
+
+Kmom 4.05.22
+
+1. Fixed User Posts view.
+
+
+
+Kmom 4.05.21
+
+1. Added check for $_SESSION being set before trying to view it within Draft's page.
+
+
+
+Kmom 4.05.2
+
+1. Added ForumDrafts M, V & C plus associated CSS. Offers basic functionality (view saved drafts).
+
+
+
+Kmom 4.05.12
+
+1. Removed css cookie setting and fixed stylesheet path in Page.
+
+
+
+Kmom 4.05.11
+
+1. Removed no longer used pages from front controller.
+
+
+
+Kmom 4.05.1
+
+1. userDrafts() added to Authorise.
+2. The above called from loginmenu.php to view the number of saved drafts.
+
+
+
+Kmom 4.05
+
+1. ForumDrafts table added.
+
+
+
+Kmom 4.04
+
+1. Auto-focus added to login form.
+
+
+
+Kmom 4.03.01
+
+1. Further CSS and HTML5 tweaks.
+
+
+Kmom 4.03
+
+1. User profile page added.
+2. Some HTML5 elements introduced.
+
+
+Kmom 4.02.12
+
+1. Split CSS class post into blog-post and forum-post.
+2. Wrapper posts in thread view into #thread and changed styling accordingly.
+
+
+Kmom 4.02.11
+
+1. Further improved styling of login, forms, blog.
+2. Disabled/Commented out aside modules on the blog.
+
+
+Kmom 4.02.1
+
+1. CSS3-fied the look of the forum.
+2. Added link to the project @ github and removed validation links.
+
+
+Kmom 4.02.03
+
+1. Added WYSIWYG to the blog new/edit pages.
+
+
 Kmom 4.02.02
 
 1. Minor changes to thread controller and forum home view.

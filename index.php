@@ -66,6 +66,7 @@ function __autoload( $class_name )
  * ------------------------------------------------------------------------
  * 
  */
+/*
 if( isset( $_POST['alternateCSS'] ) )
 {
 	setcookie('style', BASE_URL . DS . 'css/alt.css', time()+2592000);
@@ -86,6 +87,7 @@ elseif( !isset ( $_COOKIE['style'] ) )
 	setcookie('style', BASE_URL . DS . 'css/default.css', time()+2592000);
 	header('Location: ' . BASE_URL . DS);
 }
+ */
 
 
 
@@ -105,24 +107,28 @@ switch($content) {
 	case 'restore_DB':	require_once CTRLS . DS . 'restoredb.php'; break;
 
 	// forum pages
-	case 'thread':		require_once CTRLS . DS . 'thread.php'; break;
-
-	// User Pages
-	case 'new_post':	require_once CTRLS . DS . 'adminusers/new_post.php'; break;
+	case 'view_thread':	require_once CTRLS . DS . 'thread.php'; break;
+	case 'edit_post':	require_once CTRLS . DS . 'thread.php'; break;
+	case 'start_new_thread':   require_once CTRLS . DS . 'thread.php'; break;
+	case 'submit_new_post':	   require_once CTRLS . DS . 'thread.php'; break;
+	case 'submit_edited_post': require_once CTRLS . DS . 'thread.php'; break;
+	
+	case 'draft': 		require_once CTRLS . DS . 'forumdrafts.php'; break;
+	case 'edit_draft':  require_once CTRLS . DS . 'forumdrafts.php'; break;
+	
+	case 'post':  require_once CTRLS . DS . 'forumpost.php'; break;
+	case 'draft':  require_once CTRLS . DS . 'forumpost.php'; break;
 		
 	case 'article':		require_once CTRLS . DS . 'blog_article.php'; break;
 	case 'feed':		require_once CTRLS . DS . 'feed.php'; break;
 	case 'login':		require_once CTRLS . DS . 'login.php'; break;
 	case 'logout':		require_once CTRLS . DS . 'logout.php'; break;
-	case 'profile':		require_once CTRLS . DS . 'userprofile/profile.php'; break;
-	case 'admin':		require_once CTRLS . DS . 'adminusers/admin.php'; break;
+	case 'profile':		require_once CTRLS . DS . 'userprofile.php'; break;
 	case 'manage':		require_once CTRLS . DS . 'adminusers/manage.php'; break;
 	case 'edit':		require_once CTRLS . DS . 'adminusers/edit.php'; break;
 	case 'delete':		require_once CTRLS . DS . 'adminusers/delete.php'; break;
 	case 'addnew':		require_once CTRLS . DS . 'adminusers/new_blog_article.php'; break;
-	case 'delComment':	require_once CTRLS . DS . 'adminusers/delete_comment.php'; break;
-	case 'style':		require_once CTRLS . DS . 'styleswitch.php'; break;
-	case 'feed':		require_once CTRLS . DS . 'feed.php'; break; 
+	case 'delComment':	require_once CTRLS . DS . 'adminusers/delete_comment.php'; break; 
 		
 	default:			require_once CTRLS . DS . 'home.php'; break;
 }
